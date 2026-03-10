@@ -1,0 +1,28 @@
+[workspace]
+resolver = "3"
+members = [
+    "core",
+    "boards/esp32c6",
+]
+
+[profile.dev]
+panic     = "abort"
+opt-level = "s"
+codegen-units = 1
+debug = true
+overflow-checks  = false
+
+[profile.release]
+panic            = "abort"
+codegen-units    = 1
+debug            = 1
+debug-assertions = false
+incremental      = false
+lto              = 'fat'
+opt-level        = 's'
+overflow-checks  = false
+
+# ESP32C6
+[profile.release.package.mos-esp32c6]
+opt-level = "s"
+codegen-units = 1

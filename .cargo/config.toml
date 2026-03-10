@@ -1,0 +1,12 @@
+[target.riscv32imac-unknown-none-elf]
+runner = "probe-rs run --chip=esp32c6 --preverify --always-print-stacktrace --no-location --catch-hardfault"
+rustflags = []
+
+[env]
+DEFMT_LOG = "info"
+
+[build]
+target = "riscv32imac-unknown-none-elf"
+
+[unstable]
+build-std = ["alloc", "core"]

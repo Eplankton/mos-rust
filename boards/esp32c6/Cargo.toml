@@ -1,0 +1,36 @@
+[package]
+edition = "2024"
+name = "mos-esp32c6"
+rust-version = "1.88"
+version = "0.1.0"
+
+[features]
+default = ["async"]
+async = ["mos/async"]
+
+[dependencies]
+mos = { path = "../../core", default-features = false }
+
+esp-hal = { version = "=1.0.0-rc.0", features = ["esp32c6", "unstable"] }
+
+esp-bootloader-esp-idf = { version = "0.4.0", features = ["esp32c6"] }
+
+critical-section = "1.2.0"
+rtt-target = "0.6.2"
+heapless = "0.9.2"
+
+# LCD 显示
+esp-alloc = "0.8.0"
+mipidsi = "0.10.0"
+embedded-graphics = "0.8.1"
+embedded-graphics-framebuf = "0.5.0"
+embedded-hal-bus = "0.3.0"
+bitmap-font = "0.3.0"
+
+# BLE (esp-wifi with custom scheduler — MOS implements Scheduler trait)
+esp-wifi = { version = "0.15.1", default-features = false, features = [
+    "esp32c6",
+    "ble",
+    "esp-alloc",
+] }
+bleps = { git = "https://github.com/bjoernQ/bleps", features = ["macros"] }

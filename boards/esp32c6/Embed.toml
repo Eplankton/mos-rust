@@ -1,0 +1,17 @@
+[default.general]
+chip = "esp32c6"
+
+[default.probe]
+protocol = "Jtag"
+
+[default.reset]
+halt_afterwards = false
+
+[default.rtt]
+enabled = true
+tabs = [
+    { up_channel = 0, down_channel = 0, name = "Terminal" },
+]
+
+[default.gdb]
+enabled = false
