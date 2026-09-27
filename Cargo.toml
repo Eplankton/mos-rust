@@ -5,6 +5,12 @@ members = [
     "boards/esp32c6",
 ]
 
+# 本地修复 bitmap-font 0.3.0 的 future-incompat 问题 (rustc#124535):
+# `src/tamzen.rs` 在模块级 `#![doc = ...]` 属性中先于宏定义调用 `font_bmp!`,
+# 上游最新发布版仍为 0.3.0, 故 vendor 到 third_party/ 并重导出该宏。
+[patch.crates-io]
+bitmap-font = { path = "third_party/bitmap-font" }
+
 [profile.dev]
 panic     = "abort"
 opt-level = "s"
